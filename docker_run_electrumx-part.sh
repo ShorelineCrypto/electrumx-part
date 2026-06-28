@@ -1,0 +1,1 @@
+docker run -d --net=host -v /opt/electrumx/db-PART/:/db -v /opt/electrumx/ssl:/ssl -e DAEMON_URL="http://your_rpc_username:your_rpcpassword@127.0.0.1:19892" -e REPORT_SERVICES=tcp://floordell:50001,ssl://floordell:50002,wss://floordell:50003 electrumx-part
