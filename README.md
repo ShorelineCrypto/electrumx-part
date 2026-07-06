@@ -5,17 +5,29 @@ Particle (PART) electrumx server and electrum wallet are available on community 
 
 ### Build Docker Image
 
+To run ElectrumX, you must increase your Linux open file descriptors limit (ulimit -n) in docker container. The default Linux limit is usually 1,024, but ElectrumX requires at least 2,500 to handle LevelDB and simultaneous client connections. 
+```
+ sudo cp daemon.json /etc/docker/
+ sudo systemctl restart docker
+```
+
 Build docker image:
 ```
  git clone https://github.com/ShorelineCrypto/electrumx-part.git && cd electrumx-part
  docker build -t electrumx-part .
 ```
 
-Or pull down a working image from docker hub:
+Or pull down a working image from docker hub.
 
+x64 linux:
 ```
- docker pull shorelinecrypto/electrumx-part:latest
- docker tag shorelinecrypto/electrumx-part:latest electrumx-part:latest
+ docker pull shorelinecrypto/electrumx-part:amd64
+ docker tag shorelinecrypto/electrumx-part:amd64 electrumx-part:latest
+```
+arm64 linux:
+```
+ docker pull shorelinecrypto/electrumx-part:arm64
+ docker tag shorelinecrypto/electrumx-part:arm64 electrumx-part:latest
 ```
 
 ### Run a particl full node
